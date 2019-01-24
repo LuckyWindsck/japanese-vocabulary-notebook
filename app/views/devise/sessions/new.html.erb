@@ -1,0 +1,39 @@
+<div align="center">
+  <h2>ログイン</h2>
+
+  <div class="form-body">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.label :login, "ユーザー名／メールアドレス", class: "float-left" %><br>
+        <%= f.text_field :login, autofocus: true, class: "input-block" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password, "パスワード", class: "float-left" %>
+        <%= link_to "パスワードを忘れた場合はこちら", new_user_password_path, class: "float-right" %><br>
+        <%= f.password_field :password, class: "input-block" %>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="field">
+          <%= f.label :remember_me, "ログイン状態を保持する", class: "float-left" %>
+          <%= f.check_box :remember_me, class: "float-right" %>
+        </div>
+      <% end -%>
+
+      <div class="actions">
+        <%= f.submit "ログイン", class: "btn btn-success btn-block btn-sign-in" %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+  </div>
+
+  <div class="form-body">
+    <span class="float-left">君だけの単語帳を作ってみよう</span>
+    <span class="glyphicon glyphicon-arrow-right"></span>
+    <%= link_to new_user_registration_path, class: "float-right" do %>
+      アカウント作成<span class="space"></span><span class="glyphicon glyphicon-user"></span>
+    <% end %>
+  </div>
+</div>

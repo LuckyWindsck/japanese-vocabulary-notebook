@@ -1,0 +1,34 @@
+<div align="center">
+  <% if notice != nil %>
+    <div class="notice-msg div-wide">
+      <span class="glyphicon glyphicon-remove float-right"></span>
+      <span id="notice"><%= notice %></span>
+    </div>
+  <% end %>
+  <div class="form-body div-wide div-table" align="left">
+    <table class="table-list">
+      <thead>
+        <tr>
+          <% @col.keys.each do |c| %>
+            <th><%= @col[c] %></th>
+          <% end %>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @vocab.each do |v| %>
+          <tr>
+            <% @col.keys.each do |c| %>
+              <td><%= v[c] %></td>
+            <% end %>
+            <td><%= link_to '削除', {controller: "main", action: "destroy", id: v}, method: :delete, data: { confirm: '本当にしますか?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= link_to '新しい単語', vocab_list_new_path %>
+  </div>
+</div>
+
+<br>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>日本語単語リスト</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <canvas></canvas>
+    <header>
+      <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
+        <p class="navbar-brand" href="">
+          <% if false %>
+          <% else %>
+          <% end %>
+        </p>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-left">
+            <li>
+              <%= link_to root_path, class: "navbar-brand" do %>
+                日本語単語リスト<span class="space"></span><span class="glyphicon glyphicon-book"></span>
+              <% end %>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <li>
+                <%= link_to profile_path, class: "navbar-right" do %>
+                  Welcome <%= current_user.username %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to help_path, class: "navbar-right" do %>
+                  <span class="glyphicon glyphicon-question-sign"></span>
+                <% end %>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <span class="space"></span><span class="glyphicon glyphicon-triangle-bottom"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "プロフィール", profile_path %></li>
+                  <li><%= link_to "単語帳", vocab_list_path %></li>
+                  <li><%= link_to "近日公開", coming_soon_path %></li>
+                  <li role="separator" class="divider"></li>
+                    <li>
+                      <%= link_to "ユーザー情報設定", edit_user_registration_path %>
+                    </li>
+                  <li role="separator" class="divider"></li>
+                    <li>
+                      <%= link_to destroy_user_session_path, method: :delete do %>
+                        ログアウト<span class="space"></span><span class="glyphicon glyphicon-log-out"></span>
+                      <% end %>
+                    </li>
+                </ul>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to new_user_session_path, class: "navbar-right" do %>
+                  Sign in<span class="space"></span><span class="glyphicon glyphicon-log-in"></span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_user_registration_path, class: "navbar-right" do %>
+                  Sign up<span class="space"></span><span class="glyphicon glyphicon-user"></span>
+                <% end %>
+              </li>
+            <% end %>
+            <li>
+              <span class="navbar-right">
+                <% 3.times do %><span class="jp-space"></span><% end %>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+
+    <div class="nav navbar-fixed-bottom btn btn-info">前のページに戻る</div>
+  </body>
+</html>

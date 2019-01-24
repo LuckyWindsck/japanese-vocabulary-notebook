@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<div align="center">
+  <h1>新しい単語を単語帳に追加する</h1>
+  <div class="form-body">
+    <%= form_with(model: @vocab_list_new, local: true) do |form| %>
+      <div class="field">
+        <%= form.label :part_of_speech, "品詞", class: "float-left" %>
+        <%= form.text_field :part_of_speech, class: "input-block" %>
+      </div>
+
+      <div class="field">
+        <%= form.label :vocab, "単語", class: "float-left" %>
+        <%= form.text_field :vocab, class: "input-block" %>
+      </div>
+
+      <div class="field">
+        <%= form.label :pronunciation, "読み方", class: "float-left" %>
+        <%= form.text_field :pronunciation, class: "input-block" %>
+      </div>
+
+      <br>
+      <div class="actions">
+        <%= form.submit "追加する", class: "btn btn-success btn-block" %>
+      </div>
+    <% end %>
+  </div>
+</div>

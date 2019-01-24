@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<div align="center">
+  <div class="form-body div-table">
+    <h1><%= @user.username %></h1>
+    <table class="table-list">
+      <thead>
+        <tr>
+          <th></th>
+          <th>単語の数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @part_of_speech.keys.sort.each do |pos| %>
+          <tr>
+            <td><%= pos %></td>
+            <td align="center"><%= @part_of_speech[pos]%></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td colspan="2"><hr></td>
+        </tr>
+        <tr>
+          <td>単語の数</td>
+          <td align="center"><%= @vocab_count %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- <div class="form-body div-wide">
+    <h3>
+      <span class="glyphicon glyphicon-education"></span><span class="space"></span>
+      Search result is from Weblio
+    </h3>
+  </div> -->
+</div>

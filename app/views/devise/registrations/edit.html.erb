@@ -1,0 +1,63 @@
+<div align="center">
+  <h2>ユーザー情報設定</h2>
+  <% if devise_error_messages! != "" %>
+    <div class="error-msg">
+      <span class="glyphicon glyphicon-remove float-right"></span>
+      <%= devise_error_messages! %>
+    </div>
+  <% end %>
+  <div class="form-body">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <h4>メールアドレスを変更</h4>
+
+      <div class="field">
+        <%= f.label :email, "メールアドレス", class: "float-left" %><br>
+        <%= f.email_field :email, autofocus: true, class: "input-block" %>
+      </div>
+
+      <hr>
+      <h4>ユーザー名を変更</h4>
+
+      <div class="field">
+        <%= f.label :username, "ユーザー名", class: "float-left" %><br>
+        <%= f.text_field :username, class: "input-block" %>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <hr>
+      <h4>Change Password</h4>
+
+      <div class="field">
+        <%= f.label :current_password, "現在のパスワード", class: "float-left" %><br>
+        <%= f.password_field :current_password, class: "input-block" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :new_password, "新しいパスワード", class: "float-left" %>
+        <% if @minimum_password_length %>
+          <em class="float-right">(<%= @minimum_password_length %> characters minimum)</em><br>
+        <% end %>
+        <%= f.password_field :new_password, class: "input-block" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation, "新しいパスワードを再入力", class: "float-left" %><br>
+        <%= f.password_field :password_confirmation, class: "input-block" %>
+      </div>
+
+      <hr>
+
+      <div class="actions">
+        <%= f.submit "変更する", class: "btn btn-warning btn-block" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="form-body">
+    <h3><span class="glyphicon glyphicon-alert"></span><span class="space"></span>アカウントを削除する</h3>
+    <%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "本当にしますか?" }, method: :delete, class: "btn btn-danger btn-block" %>
+  </div>
+</div>

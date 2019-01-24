@@ -1,0 +1,39 @@
+%form-style
+  background-color: #fff
+  border: 1px solid #d8dee2
+  border-radius: 5px
+  margin-top: 16px
+  padding: 20px
+  width: 400px
+
+.notice-msg
+  @extend %form-style
+  background-color: #5bc0de
+  color: #337ab7
+
+.error-msg
+  @extend %form-style
+  background-color: #ffdce0
+  color: #86181d
+
+#error_explanation > h2
+  display: none
+
+#error_explanation > ul
+  margin-bottom: 0px
+  font-size: 12px
+  text-align: left
+
+.form-body
+  @extend %form-style
+
+.form-body > h3
+  margin-top: 0px
+
+.input-block
+  margin-bottom: 15px
+  margin-top: 5px
+  width: 100%
+
+.btn-sign-in
+  margin-top: 35px

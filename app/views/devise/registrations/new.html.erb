@@ -1,0 +1,49 @@
+<div align="center">
+  <h2>アカウント作成</h2>
+  <% if devise_error_messages! != "" %>
+    <div class="error-msg">
+      <span class="glyphicon glyphicon-remove float-right"></span>
+      <%= devise_error_messages! %>
+    </div>
+  <% end %>
+  <div class="form-body">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.label :email, "メールアドレス", class: "float-left" %><br>
+        <%= f.email_field :email, autofocus: true, class: "input-block" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :username, "ユーザー名", class: "float-left" %><br>
+        <%= f.text_field :username, class: "input-block" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password, "パスワード", class: "float-left" %>
+        <% if @minimum_password_length %>
+        <em class="float-right">(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br>
+        <%= f.password_field :password, class: "input-block" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation, "パスワードを再入力", class: "float-left" %><br>
+        <%= f.password_field :password_confirmation, class: "input-block" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "作成する", class: "btn btn-success btn-block" %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+  </div>
+
+  <div class="form-body">
+    <span class="float-left">すでにアカウントをお持ちですか？</span>
+    <span class="glyphicon glyphicon-arrow-right"></span>
+    <%= link_to new_user_session_path, class: "float-right" do %>
+      登録する<span class="space"></span><span class="glyphicon glyphicon-log-in"></span>
+    <% end %>
+  </div>
+</div>
